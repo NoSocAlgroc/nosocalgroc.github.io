@@ -16,6 +16,7 @@ body
 }
 
 /* start all section */
+/*
 #home,
 #home .fp-slide,
 #home .fp-tableCell,
@@ -42,7 +43,7 @@ footer .fp-tableCell
 {
     height: auto !important;
 }
-
+*/
 /* end all section */
 
 /* start all heading */
@@ -169,46 +170,92 @@ h1,h2,h3,h4,h5
 /* end simpletextrotator */
 
 /* start home */       
-#home
-	{
-        background: url('../images/home-bg.jpg');
-        background-size: cover;
-        background-repeat: no-repeat;
-        padding-top: 120px;
-        padding-bottom: 140px;
-        text-align: center;
-	}
-#home h1
-    {
-        border: 2px solid #D43F52;
-        color: #D43F52;
-        display: inline-block;
-        letter-spacing: 6px;
-        padding: 25px 35px;
-        margin: 30px 0;
-    }
-#home h2
-    {
-        padding-bottom: 10px;
-    }
-#home .btn
-    {
-        background: transparent;
-        border: 2px solid #ffffff;
-        color: #ffffff;
-        font-size: 16px;
-        font-weight: bold;
-        width: 180px;
-        height: 60px;
-        margin-top: 40px;
-        padding-top: 18px;
-        transition: all 0.4s ease-in-out;
-    }
-#home .btn:hover
-    {
-        background: #D43F52;
-        border-color: transparent;
-    }
+
+.home-bg {
+    background-image: url(../images/home-bg.jpg);
+    background-position: center center;
+    background-size: cover;
+    position: relative;
+}
+
+.home-table-center {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.home-table {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+.header_title {
+    font-size: 72px;
+    font-weight: 400;
+    line-height: 1.2;
+    text-transform: capitalize;
+}
+
+.header_subtitle {
+    line-height: 2.0;
+    font-size: 18px;
+    max-width: 600px;
+}
+
+.social_home li a {
+    font-size: 18px;
+    color: #ffffff;
+    display: inline-block;
+    width: 30px;
+    text-align: center;
+}
+
+.scroll_down {
+    position: absolute;
+    bottom: 5vh;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 13px;
+    z-index: 8;
+}
+
+.scroll_down i {
+    position: relative;
+    -webkit-animation: bounce 2s infinite;
+    animation: bounce 2s infinite;
+    height: 50px;
+    width: 30px;
+    line-height: 60px;
+    border-radius: 30px;
+    border: 2px solid #ffffff;
+    display: inline-block;
+    color: #fff;
+    font-size: 12px;
+}
+
+.scroll_down i:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    z-index: -1;
+    transition: all .2s;
+}
+
+.bg-overlay {
+    background: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+}
 /* end home */
 
 /* start work */
