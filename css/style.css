@@ -628,6 +628,290 @@ button:focus {
     font-size: 42px;
 }
 
+#languagesCarousel 
+{
+    width: auto;
+}
+#languagesCarousel .carousel-inner 
+{
+    left: 5%;
+    width: 90%;
+    position: relative;
+}
+#languagesCarousel .carousel-inner .carousel-item
+{
+
+}
+#languagesCarousel .carousel-inner .carousel-item .logo-list
+{
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+
+    
+}
+#languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col 
+{
+    width: 330px;
+    height: 330px;
+    margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+}
+#languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container
+{
+    width: 80%;
+    aspect-ratio: 1;
+    margin: 10%;
+    position: relative;
+    border-radius: 10px;
+    padding: 10px;
+
+    overflow: hidden;
+}
+
+/*
+Alternating pattern
+*/
+#languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col:nth-child(odd) .logo-container
+{
+    background-color: rgb(233, 236, 239)
+}
+#languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col:nth-child(even) .logo-container
+{
+    background-color:rgb(253, 253, 253);
+}
+
+/*logo pic*/
+#languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container img
+{
+    position: absolute;
+    height: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+
+/*lang name*/
+#languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container .lang-name
+{
+    position: absolute;
+    top: 15%;
+    left: 80%;
+    transform: translate(-50%,-50%);
+
+    font-weight: 900;
+    font-size: 200%;
+    color: rgb(65, 69, 71);
+    opacity: 0;
+}
+
+
+/*Knowledge bar*/
+#languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container .skill-percentage
+{
+    color: rgb(108, 117, 125);
+    font-weight: bold;
+
+    position: absolute;
+    top: 95%;
+    left: 80%;
+    transform: translate(-50%,-100%);    
+}
+#languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container .progress 
+{
+    height: 4px;
+    width: 80%;
+    position: absolute;
+    top: 95%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+#languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container .progress-bar 
+{
+    background: #000;
+}
+
+
+/*Skill tags*/
+#languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container .skill-tag-container
+{
+    position: absolute;
+    top: 100%;
+    left: 5%;
+    width: 90%;
+    height: 40%;
+    
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+    flex-direction: column;
+
+    opacity: 0;
+}
+#languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container .skill-tag-container .skill-tag-row
+{
+    flex-basis: 100%;   
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+}
+#languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container .skill-tag-container .skill-tag-row .skill-tag
+{
+    color: white;
+    background-color: var(--col2);
+
+    padding: 0px 6px;
+    border-radius: 20px;
+    
+    margin: auto;
+    border-width: 2px;
+    border-color: var(--col3);
+    border-style: solid;
+
+    text-align: center;
+    vertical-align: middle;
+    overflow: hidden;
+    white-space: nowrap;
+
+    font-size: 85%;
+}
+
+/*See more button*/
+#languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container .skill-more
+{
+    position: absolute;
+    top: 282%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+    color: var(--col3);
+    background-color: var(--col1);
+
+    padding: 2px 15px;
+    border-radius: 20px;
+    
+    margin: 6px 4px;
+    border-width: 2px;
+    border-color: var(--col3);
+    border-style: solid;
+
+    text-align: center;
+    vertical-align: middle;
+    overflow: hidden;
+    white-space: nowrap;
+
+    font-size: 150%;
+
+    opacity: 0;
+}
+#languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container .skill-more:hover
+{
+    transition: color 0.3s, background-color 0.3s;
+    color: white;
+    background-color: var(--col3);
+}
+
+/*
+Hover logo transitions
+*/
+#languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container
+{
+    transition: width 0.5s, margin 0.5s, background-color 0.5s;
+}
+#languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container:hover
+{
+    width: 90%;
+    margin: 5%;
+    background-color: var(--col1);
+}
+
+
+#languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container .lang-name
+{
+    transition: left 0.5s, opacity 0.5s;
+}
+#languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container:hover .lang-name
+{
+    opacity: 1;
+    left: 50%;
+}
+
+
+#languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container img
+{
+    transition: height 0.5s, top 0.5s, left 0.5s;
+}
+#languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container:hover img
+{
+    height: 20%;
+    top: 15%;
+    left: 15%;
+}
+
+
+#languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container .skill-percentage
+{
+    transition: top 0.5s;
+}
+#languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container:hover .skill-percentage
+{
+    top: 30%;
+}
+
+
+#languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container .progress 
+{
+    transition: top 0.5s;
+}
+#languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container:hover .progress 
+{
+    top: 30%;
+}
+
+
+#languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container .skill-tag-container
+{
+    transition: top 0.5s, opacity 0.5s;
+}
+#languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container:hover .skill-tag-container
+{
+    top: 35%;
+    opacity: 1;
+}
+
+#languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container .skill-more
+{
+    transition: top 0.5s, opacity 0.5s;
+}
+#languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container:hover .skill-more
+{
+    top: 82%;
+    opacity: 1;
+}
+
+
+/*Controls */
+#languagesCarousel .carousel-control
+{
+    background-color: rgba(0, 0, 0, 0.1);
+    border: 0;
+    width: 5%;
+    min-width: 40px;
+    z-index: 2;
+}
+
+#languagesCarousel button i
+{
+    color: #000;
+}
+
+
+
+
 /*==========================
         7.FUNFACTS
 ============================*/
