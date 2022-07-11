@@ -669,6 +669,8 @@ button:focus {
     padding: 10px;
 
     overflow: hidden;
+
+    --fadeTime:0.4s;
 }
 
 /*
@@ -820,7 +822,7 @@ Hover logo transitions
 */
 #languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container
 {
-    transition: width 0.5s, margin 0.5s, background-color 0.5s;
+    transition: width var(--fadeTime), margin var(--fadeTime), background-color var(--fadeTime);
 }
 #languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container:hover
 {
@@ -832,7 +834,7 @@ Hover logo transitions
 
 #languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container .lang-name
 {
-    transition: left 0.5s, opacity 0.5s;
+    transition: left var(--fadeTime), opacity var(--fadeTime);
 }
 #languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container:hover .lang-name
 {
@@ -843,7 +845,7 @@ Hover logo transitions
 
 #languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container img
 {
-    transition: height 0.5s, top 0.5s, left 0.5s;
+    transition: height var(--fadeTime), top var(--fadeTime), left var(--fadeTime);
 }
 #languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container:hover img
 {
@@ -855,7 +857,7 @@ Hover logo transitions
 
 #languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container .skill-percentage
 {
-    transition: top 0.5s;
+    transition: top var(--fadeTime);
 }
 #languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container:hover .skill-percentage
 {
@@ -865,7 +867,7 @@ Hover logo transitions
 
 #languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container .progress 
 {
-    transition: top 0.5s;
+    transition: top var(--fadeTime);
 }
 #languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container:hover .progress 
 {
@@ -875,7 +877,7 @@ Hover logo transitions
 
 #languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container .skill-tag-container
 {
-    transition: top 0.5s, opacity 0.5s;
+    transition: top var(--fadeTime), opacity var(--fadeTime);
 }
 #languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container:hover .skill-tag-container
 {
@@ -885,7 +887,7 @@ Hover logo transitions
 
 #languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container .skill-more
 {
-    transition: top 0.5s, opacity 0.5s;
+    transition: top var(--fadeTime), opacity var(--fadeTime);
 }
 #languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container:hover .skill-more
 {
