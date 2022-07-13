@@ -105,4 +105,69 @@ $(window).on("load",function(){
 	{
 		console.log(e);
 	});
-})
+});
+
+//Skill carousel width selection
+$(window).on("load",function(){
+	var itemsPerPage=0;
+
+	const updateItemsFunc=function()
+	{
+		const carousel=$("#languagesCarousel");
+		const inner=carousel.children(".carousel-inner");
+		const width=inner[0].clientWidth;
+
+		const itemWidth=330;
+		var items=Math.floor(width/itemWidth);
+		
+		if(items<=0)items=1;
+
+		if(items==itemsPerPage)return;
+
+		itemsPerPage=items;
+
+		//contaners
+		const containers=inner.find(".logo-col");
+		const pages=Math.ceil(containers.length/itemsPerPage);
+
+		containers.detach();
+
+		const pageTemplate=inner.children(".carousel-item:first-child").clone();
+		pageTemplate.removeClass("active");
+
+		inner.empty();
+
+		//indicators
+		const indicators=carousel.children(".carousel-indicators");
+		const indicatorTemplate=indicators.children("li:first-child").clone();
+		indicatorTemplate.removeClass("active");
+
+		indicators.empty();
+
+		var containerIdx=0
+		for(var pageIdx=0;pageIdx<pages;pageIdx++)
+		{
+			const currentPage=pageTemplate.clone();
+			const currentIndicator=indicatorTemplate.clone();
+			currentIndicator.attr("data-slide-to",pageIdx.toString())
+			for(var pageContainerIdx=0;pageContainerIdx<itemsPerPage;pageContainerIdx++,containerIdx++)
+			{
+				const container=containers[containerIdx];
+				const logoList=currentPage.children();
+				logoList.append(container);
+			}
+			if(pageIdx==0)
+			{
+				currentPage.addClass("active");
+				currentIndicator.addClass("active");
+			}
+			inner.append(currentPage);
+			indicators.append(currentIndicator);
+		}
+	};
+
+	updateItemsFunc();
+
+	$(window).on("resize",updateItemsFunc);
+	
+});
