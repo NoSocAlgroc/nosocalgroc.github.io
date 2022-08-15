@@ -1,0 +1,19 @@
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.1" height="32" width="32"><rect id="backgroundrect" width="100%" height="100%" x="0" y="0" fill="none" stroke="none" style="" class=""/>
+  <defs id="defs2"/>
+  <metadata id="metadata5">
+    <rdf:RDF>
+      <cc:Work rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <dc:title/>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  
+<g class="currentLayer" style=""><title>Layer 1</title><g id="layer1" class="">
+    <g id="g4550">
+      <path style="fill:#e55b2d;fill-opacity:1" d="m363.2410072956848,687.87305 v18.89843 l32.73047,18.89844 v-18.89844 zm-65.46289,18.89843 v18.89844 l16.36523,9.44727 V716.2207 zm49.0957,9.44922 l-16.36523,9.44922 v56.69141 l16.36523,9.44922 v-37.79493 l16.36719,9.44922 v-18.89843 l-16.36719,-9.44922 z" transform="translate(-77.9425, -177) scale(0.264583)" id="path4508"/>
+      <path style="fill:#ed8e24;fill-opacity:1" d="m363.2410072956848,687.87305 l-49.09766,28.34765 v18.89649 l32.73047,-18.89649 v18.89649 l16.36719,-9.44727 zm49.09765,9.44922 l-16.36718,9.44921 v18.89844 l16.36718,-9.44922 zm-32.73242,37.79492 l-16.36523,9.44922 v18.89843 l16.36523,-9.44922 zm-16.36523,28.34765 l-16.36719,-9.44922 v37.79493 l16.36719,-9.44922 z" transform="translate(-77.9425, -177) scale(0.264583)" id="path4491"/>
+      <path style="fill:#f8bf3c;fill-opacity:1" d="m363.2410072956848,668.97656 l-65.46289,37.79492 l16.36523,9.44922 l49.09766,-28.34765 l32.73047,18.89843 l16.36718,-9.44921 zm0,56.69336 l-16.36719,9.44727 l16.36719,9.44922 l16.36523,-9.44922 z" transform="translate(-77.9425, -177) scale(0.264583)" id="path4506"/>
+    </g>
+  </g></g></svg>

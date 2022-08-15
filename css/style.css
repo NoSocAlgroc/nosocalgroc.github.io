@@ -912,7 +912,197 @@ Hover logo transitions
 }
 
 
+/*Skills panel*/
 
+#skillsPanel
+{
+    width: 100%;
+    height: fit-content;
+    background-color:lightgray;
+    display: flex;
+    flex-direction: column;
+}
+
+#skillsPanel .skillsRow
+{
+    flex: 1;
+    width: 100%;
+    display: flex;
+}
+#skillsPanel .skillsRow .skillCol
+{
+    flex: 1;
+    position: relative;
+    aspect-ratio: 1;
+}
+#skillsPanel .skillsRow .skillCol .skillContainer
+{
+    width: 80%;
+    aspect-ratio: 1;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10%;
+
+    position: relative;
+    overflow: hidden;
+
+    --fadeTime:0.4s;
+}
+
+/*logo pic*/
+#skillsPanel .skillsRow .skillCol .skillContainer img
+{
+    position: absolute;
+    width: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+
+/*lang name*/
+#skillsPanel .skillsRow .skillCol .skillContainer .lang-name
+{
+    position: absolute;
+    top: 2%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+    font-weight: 900;
+    font-size: 200%;
+    color: rgb(65, 69, 71);
+    opacity: 0;
+}
+
+
+/*Knowledge bar*/
+#skillsPanel .skillsRow .skillCol .skillContainer .skill-percentage
+{
+    color: rgb(108, 117, 125);
+    font-weight: bold;
+
+    position: absolute;
+    top: 95%;
+    left: 80%;
+    transform: translate(-50%,-100%);    
+}
+#skillsPanel .skillsRow .skillCol .skillContainer .progress 
+{
+    height: 4px;
+    width: 80%;
+    position: absolute;
+    top: 95%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+#skillsPanel .skillsRow .skillCol .skillContainer .progress-bar 
+{
+    background: #000;
+}
+
+
+/*See more button*/
+#skillsPanel .skillsRow .skillCol .skillContainer .skill-more
+{
+    position: absolute;
+    top: 120%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+    color: var(--col3);
+    background-color: var(--col1);
+
+    padding: 2px 15px;
+    border-radius: 20px;
+    
+    margin: 6px 4px;
+    border-width: 2px;
+    border-color: var(--col3);
+    border-style: solid;
+
+    text-align: center;
+    vertical-align: middle;
+    overflow: hidden;
+    white-space: nowrap;
+
+    font-size: 150%;
+
+    opacity: 0;
+}
+#skillsPanel .skillsRow .skillCol .skillContainer .skill-more:hover
+{
+    transition: color 0.3s, background-color 0.3s;
+    color: white;
+    background-color: var(--col3);
+}
+
+/*
+Hover logo transitions
+*/
+#skillsPanel .skillsRow .skillCol .skillContainer
+{
+    transition: width var(--fadeTime), margin var(--fadeTime), background-color var(--fadeTime);
+}
+#skillsPanel .skillsRow .skillCol .skillContainer:hover
+{
+    width: 90%;
+    margin: 5%;
+    background-color: var(--col1);
+}
+
+
+#skillsPanel .skillsRow .skillCol .skillContainer .lang-name
+{
+    transition: top var(--fadeTime), opacity var(--fadeTime);
+}
+#skillsPanel .skillsRow .skillCol .skillContainer:hover .lang-name
+{
+    opacity: 1;
+    top: 15%;
+}
+
+
+#skillsPanel .skillsRow .skillCol .skillContainer img
+{
+    transition: width var(--fadeTime), top var(--fadeTime), left var(--fadeTime);
+}
+#skillsPanel .skillsRow .skillCol .skillContainer:hover img
+{
+    width: 40%;
+    top: 45%;
+    left: 50%;
+}
+
+
+#skillsPanel .skillsRow .skillCol .skillContainer .skill-percentage
+{
+    transition: top var(--fadeTime);
+}
+#skillsPanel .skillsRow .skillCol .skillContainer:hover .skill-percentage
+{
+    top: 70%;
+}
+
+
+#skillsPanel .skillsRow .skillCol .skillContainer .progress 
+{
+    transition: top var(--fadeTime), width var(--fadeTime);
+}
+#skillsPanel .skillsRow .skillCol .skillContainer:hover .progress 
+{
+    top: 70%;
+}
+
+#skillsPanel .skillsRow .skillCol .skillContainer .skill-more
+{
+    transition: top var(--fadeTime), opacity var(--fadeTime);
+}
+#skillsPanel .skillsRow .skillCol .skillContainer:hover .skill-more
+{
+    top: 82%;
+    opacity: 1;
+}
 
 /*==========================
         7.FUNFACTS
