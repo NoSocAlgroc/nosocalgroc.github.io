@@ -171,3 +171,80 @@ $(window).on("load",function(){
 	$(window).on("resize",updateItemsFunc);
 	
 });
+
+//Skills panel
+$(window).on("load",function(){
+	var itemsPerRow=0;
+	const rowsPerPage=5;
+	
+
+	const updateItemsFunc=function()
+	{
+		const carousel=$("#skillsCarousel");
+		const inner=carousel.children(".carousel-inner");
+		const width=inner[0].clientWidth;
+
+		const itemWidth=200;
+		var items=Math.floor(width/itemWidth);
+		
+		if(items<=0)items=1;
+
+		if(items==itemsPerRow)return;
+
+		itemsPerRow=items;
+
+		const itemsPerPage=itemsPerRow*rowsPerPage
+
+		//contaners
+		const containers=inner.find(".skillCol");
+		const pages=Math.ceil(containers.length/itemsPerPage);
+
+		containers.detach();
+
+		const pageTemplate=inner.children(".carousel-item:first-child").clone();
+		pageTemplate.removeClass("active");
+
+		const rowTemplate=pageTemplate.children().children(".skillsRow:first-child").clone();
+
+		pageTemplate.children().children().detach()
+
+
+		inner.empty();
+
+		//indicators
+		const indicators=carousel.children(".carousel-indicators");
+		const indicatorTemplate=indicators.children("li:first-child").clone();
+		indicatorTemplate.removeClass("active");
+
+		indicators.empty();
+
+		var containerIdx=0
+		for(var pageIdx=0;pageIdx<pages;pageIdx++)
+		{
+			const currentPage=pageTemplate.clone();
+			const currentIndicator=indicatorTemplate.clone();
+			currentIndicator.attr("data-slide-to",pageIdx.toString())
+			for(var rowIdx=0;rowIdx<rowsPerPage && containerIdx<containers.length;rowIdx++)
+			{
+				const currentRow=rowTemplate.clone();
+				for(var colIdx=0;colIdx<itemsPerRow && containerIdx<containers.length;colIdx++,containerIdx++){
+					const container=containers[containerIdx];
+					currentRow.append(container);
+				}
+				currentPage.children().append(currentRow);
+			}
+			if(pageIdx==0)
+			{
+				currentPage.addClass("active");
+				currentIndicator.addClass("active");
+			}
+			inner.append(currentPage);
+			indicators.append(currentIndicator);
+		}
+	};
+
+	updateItemsFunc();
+
+	$(window).on("resize",updateItemsFunc);
+	
+});
