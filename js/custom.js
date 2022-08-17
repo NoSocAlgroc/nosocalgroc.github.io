@@ -174,41 +174,63 @@ $(window).on("load",function(){
 
 //Skills panel
 $(window).on("load",function(){
+
+	const carousel=$("#skillsCarousel");
+	const inner=carousel.children(".carousel-inner");
+
 	var itemsPerRow=0;
 	const rowsPerPage=5;
+
+	const filterBox=$("#skillsFilter");
 	
-
-	const updateItemsFunc=function()
+	const setItemFilter=function(string)
 	{
-		const carousel=$("#skillsCarousel");
-		const inner=carousel.children(".carousel-inner");
-		const width=inner[0].clientWidth;
+		if(string==null)return [];
+		currentFilter=string.toLowerCase().split(" ");
+		setItems(filterItems());			
+	}
+	var currentFilter=[];
+	filterBox.on("input",()=>setItemFilter(skillsFilter.value));
 
-		const itemWidth=200;
-		var items=Math.floor(width/itemWidth);
-		
-		if(items<=0)items=1;
+	//contaners
+	const itemSet=inner.find(".skillCol");
+	
+	const filterItems=function()
+	{
+		const filterItem=function(index,element)
+		{
+			const name=$(element).find(".lang-name")[0].innerText.trim()
 
-		if(items==itemsPerRow)return;
+			const keywords=[name.toLowerCase()];
+			//All filters must be in some keyword
 
-		itemsPerRow=items;
 
+
+			return currentFilter.every((fl)=>keywords.some((kw)=> kw.includes(fl)));
+		};
+		return itemSet.filter(filterItem);
+	};
+
+	//Copy non empty page template
+	const pageTemplate=inner.children(".carousel-item:first-child").clone();
+	pageTemplate.removeClass("active");
+
+	//Copy non empty row	
+	const rowTemplate=pageTemplate.children().children(".skillsRow:first-child").clone();
+
+	//Remove children from the page to make it empty
+	pageTemplate.children().children().detach();
+	//Remove children from the row to make it empty
+	rowTemplate.children().detach();
+
+	const setItems=function(containers)
+	{
 		const itemsPerPage=itemsPerRow*rowsPerPage
 
-		//contaners
-		const containers=inner.find(".skillCol");
 		const pages=Math.ceil(containers.length/itemsPerPage);
 
-		containers.detach();
-
-		const pageTemplate=inner.children(".carousel-item:first-child").clone();
-		pageTemplate.removeClass("active");
-
-		const rowTemplate=pageTemplate.children().children(".skillsRow:first-child").clone();
-
-		pageTemplate.children().children().detach()
-
-
+		
+		//clear pages
 		inner.empty();
 
 		//indicators
@@ -241,6 +263,26 @@ $(window).on("load",function(){
 			inner.append(currentPage);
 			indicators.append(currentIndicator);
 		}
+	};
+
+	const updateItemsFunc=function()
+	{
+		const width=inner[0].clientWidth;
+
+		const itemWidth=200;
+		var items=Math.floor(width/itemWidth);
+		
+		if(items<=0)items=1;
+
+		if(items==itemsPerRow)return;
+
+		itemsPerRow=items;
+
+
+		
+
+		setItems(filterItems());
+		
 	};
 
 	updateItemsFunc();
