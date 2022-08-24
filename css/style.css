@@ -619,6 +619,28 @@ button:focus {
 /*==========================
         6.SERVICES
 ============================*/
+/*Skills texts*/
+.skill-head
+{
+    margin-bottom: 20px;
+}
+.skill-body p
+{
+    margin-top: 10px;
+}
+.skill-separator
+{
+    display: inline-block;
+    margin-top: -7px;
+    vertical-align: middle;
+    content: "";
+    background-color: #d0d0d0;
+    width: 30px;
+    height: 1px;
+}
+
+
+
 
 .lan_box_ser {
     border: 1px dotted #e7e7e7;
