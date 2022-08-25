@@ -656,9 +656,12 @@ button:focus {
 }
 #languagesCarousel .carousel-inner 
 {
-    left: 5%;
-    width: 90%;
+    left: 3.5%;
+    width: 93%;
     position: relative;
+    border: 5px solid #222;
+    border-radius: 20px;
+    background-color: #bdbdbd;;
 }
 #languagesCarousel .carousel-inner .carousel-item
 {
@@ -921,11 +924,14 @@ Hover logo transitions
 /*Controls */
 #languagesCarousel .carousel-control
 {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgb(0, 0, 0);
     border: 0;
-    width: 5%;
-    min-width: 40px;
+    width: 3%;
     z-index: 2;
+    aspect-ratio: 1;
+    top: 50%;
+    transform: translate(0,-50%);
+    border-radius: 100%;
 }
 
 #languagesCarousel button i
