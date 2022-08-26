@@ -653,6 +653,11 @@ button:focus {
 #languagesCarousel 
 {
     width: auto;
+    margin-bottom: 50px;
+}
+#languagesCarousel .carousel-indicators
+{
+    bottom: -3px;
 }
 #languagesCarousel .carousel-inner 
 {
@@ -941,7 +946,35 @@ Hover logo transitions
 
 
 /*Skills panel*/
+#skillsCarousel
+{
+    margin-top: 20px;
+}
+#skillsCarousel .carousel-inner
+{
+    left: 3.5%;
+    width: 93%;
+    position: relative;
+    border: 5px solid #222;
+    border-radius: 20px;
+    background-color: #bdbdbd;;
+}
 
+#skillsCarousel .carousel-control
+{
+    background-color: rgb(0, 0, 0);
+    border: 0;
+    width: 3%;
+    z-index: 2;
+    aspect-ratio: 1;
+    top: 50%;
+    transform: translate(0,-50%);
+    border-radius: 100%;
+}
+#skillsCarousel .carousel-indicators
+{
+    bottom: -7px;
+}
 .skillsPanel
 {
     width: 100%;
