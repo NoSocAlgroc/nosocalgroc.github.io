@@ -842,7 +842,6 @@ Alternating pattern
 }
 #languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container .skill-more:hover
 {
-    transition: color 0.3s, background-color 0.3s;
     color: white;
     background-color: var(--col3);
 }
@@ -917,7 +916,7 @@ Hover logo transitions
 
 #languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container .skill-more
 {
-    transition: top var(--fadeTime), opacity var(--fadeTime);
+    transition: top var(--fadeTime), opacity var(--fadeTime),color 0.3s, background-color 0.3s;
 }
 #languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col .logo-container:hover .skill-more
 {
@@ -1095,7 +1094,6 @@ Hover logo transitions
 }
 .skillsPanel .skillsRow .skillCol .skillContainer .skill-more:hover
 {
-    transition: color 0.3s, background-color 0.3s;
     color: white;
     background-color: var(--col3);
 }
@@ -1159,7 +1157,7 @@ Hover logo transitions
 
 .skillsPanel .skillsRow .skillCol .skillContainer .skill-more
 {
-    transition: top var(--fadeTime), opacity var(--fadeTime);
+    transition: top var(--fadeTime), opacity var(--fadeTime),color 0.3s, background-color 0.3s;
 }
 .skillsPanel .skillsRow .skillCol .skillContainer:hover .skill-more
 {
