@@ -617,7 +617,7 @@ button:focus {
 }
 
 /*==========================
-        6.SERVICES
+        6.SKILLS
 ============================*/
 /*Skills texts*/
 .skill-head
@@ -649,6 +649,12 @@ button:focus {
 .lan_box_ser .ser_icon i {
     font-size: 42px;
 }
+
+.carousel-inner
+{
+    --container-col-1: rgb(253, 253, 253);
+}
+
 
 #languagesCarousel 
 {
@@ -706,13 +712,13 @@ button:focus {
 /*
 Alternating pattern
 */
-#languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col:nth-child(odd) .logo-container
+#languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col:nth-of-type(odd) .logo-container
 {
-    background-color: rgb(233, 236, 239)
+    background-color: var(--container-col-1)
 }
-#languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col:nth-child(even) .logo-container
+#languagesCarousel .carousel-inner .carousel-item .logo-list .logo-col:nth-of-type(even) .logo-container
 {
-    background-color:rgb(253, 253, 253);
+    background-color: var(--container-col-1)
 }
 
 /*logo pic*/
@@ -1009,6 +1015,8 @@ Hover logo transitions
     overflow: hidden;
 
     --fadeTime:0.4s;
+
+    background-color: var(--container-col-1);
 }
 
 /*logo pic*/
