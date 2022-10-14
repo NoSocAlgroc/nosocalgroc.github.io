@@ -11,6 +11,7 @@ $("#status").fadeOut(), $("#preloader").delay(350).fadeOut("slow"), $("body").de
 	offset: 20
 });
 var a = 0;
+/*
 $(window).on("scroll", (function () {
 	var e = $("#counter").offset().top - window.innerHeight;
 	0 == a && $(window).scrollTop() > e && ($(".lan_fun_value").each((function () {
@@ -31,7 +32,8 @@ $(window).on("scroll", (function () {
 			}
 		})
 	})), a = 1)
-})), $(window).on("load", (function () {
+})),
+*/ $(window).on("load", (function () {
 	var e = $(".work-filter"),
 		t = $("#menu-filter");
 	e.isotope({
@@ -107,14 +109,36 @@ $(window).on("load",function(){
 	});
 });
 
-//Skill carousel width selection
+//Skill carousel
 $(window).on("load",function(){
 	var itemsPerPage=0;
 
+	var data=$("#languagesCarouselData");
+	data.detach();
+
+	const languages=data.children();
+	const numLanguages=languages.length;
+
+	//templates to copy
+	const pageTemplate=$("#templates .carousel-item");
+	const containerTemplate=$("#templates .logo-col");
+	const tagTemplate=$("#templates .skill-tag");
+	const indicatorTemplate=$("#templates li");
+
+
+
+	//Copy items from the data with the appropiate dimensions
 	const updateItemsFunc=function()
 	{
+		//Get carousel div and empty its contents
 		const carousel=$("#languagesCarousel");
 		const inner=carousel.children(".carousel-inner");
+		const indicators=carousel.children(".carousel-indicators");
+
+
+
+		//Calculate items per page and see if a change is needed
+
 		const width=inner[0].clientWidth;
 
 		const itemWidth=330;
@@ -122,11 +146,65 @@ $(window).on("load",function(){
 		
 		if(items<=0)items=1;
 
+		//No changes
 		if(items==itemsPerPage)return;
 
+		//Yes changes, empty and rebuild
 		itemsPerPage=items;
 
-		//contaners
+		inner.empty();
+		indicators.empty();
+
+		//create containers to fit width
+		var containerIdx=0;
+		const numPages=Math.ceil(numLanguages/itemsPerPage);
+
+		//for each page
+		for(var pageIdx=0;pageIdx<numPages;pageIdx++)
+		{
+			//Create page
+			const page=pageTemplate.clone();
+
+			//For each container to be placed in this page
+			for(var pageContainerIdx=0;pageContainerIdx<itemsPerPage && containerIdx<numLanguages;pageContainerIdx++,containerIdx++)
+			{
+				const language=$(languages[containerIdx]);
+				//Create container
+				const col=containerTemplate.clone();
+				const container=col.children();
+				container[0].style.cssText=language[0].style.cssText;
+				container.children(".lang-name").text(language.children(".lang-name").text());
+
+				//Insert tags
+				const tagContainer=container.children(".skill-tag-container");
+				const tags=language.children(".tags").children();
+				for(var tagIdx=0;tagIdx<tags.length;tagIdx++)
+				{
+					const tag=tagTemplate.clone();
+					tag.text(tags[tagIdx].textContent);
+
+					//add tag
+					tagContainer.append(tag);
+				}
+
+				//Add column to page
+				page.children().append(col);
+
+			}
+			//Add page to carousel
+			inner.append(page);
+			//Add page indicator
+			const indicator=indicatorTemplate.clone();
+			indicator.attr("data-slide-to",pageIdx.toString());
+			indicators.append(indicator);
+		}
+		//set first page active
+		indicators.children().first().addClass("active");
+		inner.children().first().addClass("active");
+
+
+		return;
+		/*
 		const containers=inner.find(".logo-col");
 		const pages=Math.ceil(containers.length/itemsPerPage);
 
@@ -138,7 +216,7 @@ $(window).on("load",function(){
 		inner.empty();
 
 		//indicators
-		const indicators=carousel.children(".carousel-indicators");
+		const indicators2=carousel.children(".carousel-indicators");
 		const indicatorTemplate=indicators.children("li:first-child").clone();
 		indicatorTemplate.removeClass("active");
 
@@ -164,6 +242,7 @@ $(window).on("load",function(){
 			inner.append(currentPage);
 			indicators.append(currentIndicator);
 		}
+		*/
 	};
 
 	updateItemsFunc();
@@ -289,4 +368,34 @@ $(window).on("load",function(){
 
 	$(window).on("resize",updateItemsFunc);
 	
+});
+
+
+//See more buttons for languages carousel
+
+$(window).on("load",function(){
+	//buttons
+	var buttons=$("#languagesCarousel .skill-more");
+	buttons.on("click",function(ev)
+	{
+		var container = this.parentElement;
+		var parent=container.parentElement;
+		var rect=container.getBoundingClientRect();
+
+		var newContainer=container.cloneNode(true);
+
+		newContainer.style.width=rect.width+"px";
+		newContainer.style.height=rect.height+"px";
+
+		newContainer.style.left=rect.left+"px";
+		newContainer.style.top=rect.top+"px";
+		
+
+		newContainer.classList.add("expanding");
+		
+		document.body.appendChild(newContainer);
+
+	});
+	//see more buttons
+
 });
