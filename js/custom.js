@@ -221,122 +221,144 @@ $(window).on("load",function(){
 });
 
 //Skills panel
-$(window).on("load",function(){
-
-	const carousel=$("#skillsCarousel");
-	const inner=carousel.children(".carousel-inner");
-
-	var itemsPerRow=0;
-	const rowsPerPage=5;
-
-	const filterBox=$("#skillsFilter");
+$(window).on("load", function () {
+	var itemsPerRow = 0;
 	
-	const setItemFilter=function(string)
-	{
-		if(string==null)return [];
-		currentFilter=string.toLowerCase().split(" ");
-		setItems(filterItems());			
-	}
-	var currentFilter=[];
-	filterBox.on("input",()=>setItemFilter(skillsFilter.value));
 
-	//contaners
-	const itemSet=inner.find(".skillCol");
-	
-	const filterItems=function()
+	const rowsPerPage = 4;
+
+	const data = $("#skillsPanelContainer .data");
+	data.detach();
+
+	const allSkills = data.children();
+	var skills=null;
+
+	const updateFilterSkills=function(filterWords)
 	{
-		const filterItem=function(index,element)
+		const filter=function()
 		{
-			const name=$(element).find(".lang-name")[0].innerText.trim()
-
+			const name=$(this).find(".skill-name")[0].innerText.trim();
 			const keywords=[name.toLowerCase()];
-			//All filters must be in some keyword
-
-
-
-			return currentFilter.every((fl)=>keywords.some((kw)=> kw.includes(fl)));
+			return filterWords.every((fl)=>keywords.some((kw)=> kw.includes(fl)));
 		};
-		return itemSet.filter(filterItem);
+		skills=allSkills.filter(filter);
 	};
+	updateFilterSkills([]);
+	
+	//templates to copy
+	const templates = $("#skillsPanelContainer .templates");
+	const pageTemplate = templates.children(".carousel-item");
+	const rowTemplate = templates.children(".skillsRow");
+	const colTemplate = templates.children(".skillCol");
 
-	//Copy non empty page template
-	const pageTemplate=inner.children(".carousel-item:first-child").clone();
-	pageTemplate.removeClass("active");
+	const indicatorTemplate = templates.children("li");
 
-	//Copy non empty row	
-	const rowTemplate=pageTemplate.children().children(".skillsRow:first-child").clone();
 
-	//Remove children from the page to make it empty
-	pageTemplate.children().children().detach();
-	//Remove children from the row to make it empty
-	rowTemplate.children().detach();
 
-	const setItems=function(containers)
-	{
-		const itemsPerPage=itemsPerRow*rowsPerPage
+	//Copy items from the data with the appropiate dimensions
+	const updateItemsFunc = function () {
+		//Get carousel div and empty its contents
+		const carousel = $("#skillsCarousel");
+		const inner = carousel.children(".carousel-inner");
+		const indicators = carousel.children(".carousel-indicators");
 
-		const pages=Math.ceil(containers.length/itemsPerPage);
-
-		
-		//clear pages
 		inner.empty();
-
-		//indicators
-		const indicators=carousel.children(".carousel-indicators");
-		const indicatorTemplate=indicators.children("li:first-child").clone();
-		indicatorTemplate.removeClass("active");
-
 		indicators.empty();
 
-		var containerIdx=0
-		for(var pageIdx=0;pageIdx<pages;pageIdx++)
-		{
-			const currentPage=pageTemplate.clone();
-			const currentIndicator=indicatorTemplate.clone();
-			currentIndicator.attr("data-slide-to",pageIdx.toString())
-			for(var rowIdx=0;rowIdx<rowsPerPage && containerIdx<containers.length;rowIdx++)
-			{
-				const currentRow=rowTemplate.clone();
-				for(var colIdx=0;colIdx<itemsPerRow && containerIdx<containers.length;colIdx++,containerIdx++){
-					const container=containers[containerIdx];
-					currentRow.append(container);
+		//create containers to fit width
+		var containerIdx = 0;
+		const numRows = Math.ceil(skills.length / itemsPerRow);
+		const numPages = Math.ceil(numRows / rowsPerPage);
+
+		//for each page
+		for (var pageIdx = 0; pageIdx < numPages; pageIdx++) {
+			//Create page
+			const page = pageTemplate.clone();
+
+			//for each row to be placed in this page
+			for (var rowIdx = 0; rowIdx < rowsPerPage; rowIdx++) {
+				const row=rowTemplate.clone();
+
+				//For each container to be placed in this row
+				for (var rowContainerIdx = 0; rowContainerIdx < itemsPerRow && containerIdx < skills.length; rowContainerIdx++, containerIdx++) {
+					const skill = $(skills[containerIdx]);
+					//Create container
+					const col = colTemplate.clone();
+					const container = col.children();
+					container[0].style.cssText = skill[0].style.cssText;
+					container.children(".skill-name").text(skill.children(".skill-name").text());
+
+					//Set logo source
+					const img = container.children("img");
+					const logoFile = skill.children(".logo-file").text();
+					img.attr("src", "images/logos/" + logoFile);
+
+					//Set percentage
+					const percent = skill.children(".percentage").text();
+					container.children(".skill-percentage").text(percent + "%");
+					container.children(".progress").children(".progress-bar").css("width", percent + "%");
+
+					//Add column to row
+					row.append(col);
+
 				}
-				currentPage.children().append(currentRow);
+
+				//Add row to page
+				page.children().append(row);
 			}
-			if(pageIdx==0)
-			{
-				currentPage.addClass("active");
-				currentIndicator.addClass("active");
-			}
-			inner.append(currentPage);
-			indicators.append(currentIndicator);
+			//Add page to carousel
+			inner.append(page);
+			//Add page indicator
+			const indicator = indicatorTemplate.clone();
+			indicator.attr("data-slide-to", pageIdx.toString());
+			indicators.append(indicator);
 		}
+		//set first page active
+		indicators.children().first().addClass("active");
+		inner.children().first().addClass("active");
 	};
 
-	const updateItemsFunc=function()
-	{
-		const width=inner[0].clientWidth;
-
-		const itemWidth=200;
-		var items=Math.floor(width/itemWidth);
-		
-		if(items<=0)items=1;
-
-		if(items==itemsPerRow)return;
-
-		itemsPerRow=items;
-
-
-		
-
-		setItems(filterItems());
-		
-	};
-
-	updateItemsFunc();
-
-	$(window).on("resize",updateItemsFunc);
 	
+
+	const onResize=function()
+	{
+		//Update only if resize triggers change in itemsPerRow
+		//Get carousel div
+		const carousel = $("#skillsCarousel");
+		const inner = carousel.children(".carousel-inner");
+
+		//Calculate items per page and see if a change is needed
+
+		const width = inner[0].clientWidth;
+
+		const itemWidth = 200;
+		var items = Math.floor(width / itemWidth);
+
+		if (items <= 0) items = 1;
+
+		//No changes
+		if (items == itemsPerRow) return;
+
+		//Yes changes, empty and rebuild
+		itemsPerRow = items;
+		updateItemsFunc();
+	};
+
+	const skillsFilter=$("#skillsFilter");
+	const updateFilter=function()
+	{
+		string=skillsFilter.val();
+		if(string==null)return [];
+		filter=string.toLowerCase().split(" ");
+		updateFilterSkills(filter);
+		updateItemsFunc();
+	};
+
+	//initial build
+	onResize();
+	$(window).on("resize", onResize);
+	skillsFilter.on("input",updateFilter)
+
 });
 
 

@@ -1037,7 +1037,7 @@ Hover logo transitions
 
 
 /*lang name*/
-.skillContainer .lang-name
+.skillContainer .skill-name
 {
     position: absolute;
     top: 2%;
@@ -1127,11 +1127,11 @@ Hover logo transitions
 }
 
 
-.skillContainer .lang-name
+.skillContainer .skill-name
 {
     transition: top var(--fadeTime), opacity var(--fadeTime);
 }
-.skillContainer:hover .lang-name
+.skillContainer:hover .skill-name
 {
     opacity: 1;
     top: 15%;
