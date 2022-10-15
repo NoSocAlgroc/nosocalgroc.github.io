@@ -778,17 +778,18 @@ Background
 .logo-container .skill-tag-container
 {
     position: absolute;
-    top: 100%;
-    left: 5%;
+    top: 130%;
+    left: 50%;
     width: 90%;
-    height: 40%;
+    height: 60%;
     
     display: flex;
     justify-content: space-evenly;
-    align-content: center;
+    align-content: space-around;
     flex-direction: row;
     flex-wrap: wrap;
 
+    transform: translate(-50%,-50%);
     opacity: 0;
 }
 .logo-container .skill-tag-container .skill-tag-row
@@ -915,11 +916,13 @@ Hover logo transitions
 
 .logo-container .skill-tag-container
 {
-    transition: top var(--fadeTime), opacity var(--fadeTime);
+    transition: top var(--fadeTime),height var(--fadeTime),width var(--fadeTime), opacity var(--fadeTime);
 }
 .logo-container:hover .skill-tag-container
 {
-    top: 35%;
+    top: 65%;
+    height: calc(60%*8/9);
+    width: calc(90%*8/9);
     opacity: 1;
 }
 

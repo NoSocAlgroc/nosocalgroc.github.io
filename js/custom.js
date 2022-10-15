@@ -187,6 +187,16 @@ $(window).on("load",function(){
 					tagContainer.append(tag);
 				}
 
+				//Set logo source
+				const img=container.children("img");
+				const logoFile=language.children(".logo-file").text();
+				img.attr("src","images/logos/"+logoFile);
+
+				//Set percentage
+				const percent=language.children(".percentage").text();
+				container.children(".skill-percentage").text(percent+"%");
+				container.children(".progress").children(".progress-bar").css("width",percent+"%");
+
 				//Add column to page
 				page.children().append(col);
 
