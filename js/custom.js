@@ -113,17 +113,18 @@ $(window).on("load",function(){
 $(window).on("load",function(){
 	var itemsPerPage=0;
 
-	var data=$("#languagesCarouselData");
+	var data=$("#languagesCarouselContainer .data");
 	data.detach();
 
 	const languages=data.children();
 	const numLanguages=languages.length;
 
 	//templates to copy
-	const pageTemplate=$("#templates .carousel-item");
-	const containerTemplate=$("#templates .logo-col");
-	const tagTemplate=$("#templates .skill-tag");
-	const indicatorTemplate=$("#templates li");
+	const templates=$("#languagesCarouselContainer .templates")
+	const pageTemplate=templates.children(".carousel-item");
+	const containerTemplate=templates.children(".logo-col");
+	const tagTemplate=templates.children(".skill-tag");
+	const indicatorTemplate=templates.children("li");
 
 
 
@@ -211,48 +212,6 @@ $(window).on("load",function(){
 		//set first page active
 		indicators.children().first().addClass("active");
 		inner.children().first().addClass("active");
-
-
-		return;
-		/*
-		const containers=inner.find(".logo-col");
-		const pages=Math.ceil(containers.length/itemsPerPage);
-
-		containers.detach();
-
-		const pageTemplate=inner.children(".carousel-item:first-child").clone();
-		pageTemplate.removeClass("active");
-
-		inner.empty();
-
-		//indicators
-		const indicators2=carousel.children(".carousel-indicators");
-		const indicatorTemplate=indicators.children("li:first-child").clone();
-		indicatorTemplate.removeClass("active");
-
-		indicators.empty();
-
-		var containerIdx=0
-		for(var pageIdx=0;pageIdx<pages;pageIdx++)
-		{
-			const currentPage=pageTemplate.clone();
-			const currentIndicator=indicatorTemplate.clone();
-			currentIndicator.attr("data-slide-to",pageIdx.toString())
-			for(var pageContainerIdx=0;pageContainerIdx<itemsPerPage;pageContainerIdx++,containerIdx++)
-			{
-				const container=containers[containerIdx];
-				const logoList=currentPage.children();
-				logoList.append(container);
-			}
-			if(pageIdx==0)
-			{
-				currentPage.addClass("active");
-				currentIndicator.addClass("active");
-			}
-			inner.append(currentPage);
-			indicators.append(currentIndicator);
-		}
-		*/
 	};
 
 	updateItemsFunc();
