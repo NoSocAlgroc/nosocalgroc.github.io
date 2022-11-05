@@ -819,6 +819,11 @@ Background
 
     font-size: 85%;
 }
+/*Popper no hover*/
+.tooltip
+{
+    pointer-events: none;
+}
 
 /*See more button*/
 .logo-container .skill-more

@@ -181,8 +181,14 @@ $(window).on("load",function(){
 				const tags=language.children(".tags").children();
 				for(var tagIdx=0;tagIdx<tags.length;tagIdx++)
 				{
-					const tag=tagTemplate.clone();
-					tag.text(tags[tagIdx].textContent);
+					const tag=tagTemplate.clone();					
+
+					const tooltipHTML=tags[tagIdx].querySelector(".tooltipHTML");
+
+					tag.attr("data-toggle","tooltip");
+					tag.attr("data-html","true");
+					tag.attr("title",tooltipHTML.innerHTML)
+					tag.text(tags[tagIdx].querySelector(".tagHTML").textContent);
 
 					//add tag
 					tagContainer.append(tag);
@@ -390,3 +396,7 @@ $(window).on("load",function(){
 	//see more buttons
 
 });
+
+$(function () {
+	$('[data-toggle="tooltip"]').tooltip()
+  })
