@@ -304,6 +304,17 @@ $(window).on("load", function () {
 					container.children(".skill-percentage").text(percent + "%");
 					container.children(".progress").children(".progress-bar").css("width", percent + "%");
 
+					//Set more tooltip
+					const skillHTML = skill.children(".skillHTML").html();
+					if(skillHTML)
+					{
+						container.children(".skill-more").attr({
+							"data-toggle":"tooltip",
+							"data-html":"true",
+							"title":skillHTML
+						});
+					}
+
 					//Add column to row
 					row.append(col);
 
