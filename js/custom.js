@@ -405,6 +405,6 @@ $(window).on("load",function(){
 
 });
 
-$(function () {
+$(document).ready(function () {
 	$('[data-toggle="tooltip"]').tooltip()
   })
