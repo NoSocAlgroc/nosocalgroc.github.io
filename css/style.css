@@ -973,7 +973,8 @@ Hover logo transitions
     position: relative;
     border: 5px solid #222;
     border-radius: 20px;
-    background-color: #bdbdbd;;
+    background-color: #bdbdbd;
+    min-height: 200px;
 }
 
 #skillsCarousel .carousel-control

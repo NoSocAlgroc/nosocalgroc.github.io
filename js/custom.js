@@ -102,12 +102,6 @@ document.addEventListener("keydown", (function (t) {
 	}), !1)
 };
 
-$(window).on("load",function(){
-	$(".carousel-item").each(function(e)
-	{
-		console.log(e);
-	});
-});
 
 //Skill carousel
 $(window).on("load",function(){
@@ -333,6 +327,9 @@ $(window).on("load", function () {
 		//set first page active
 		indicators.children().first().addClass("active");
 		inner.children().first().addClass("active");
+
+		//Disable carousel buttons if they are unnecessary
+		carousel.children(".carousel-control").prop('hidden',numPages<=1)
 	};
 
 	
