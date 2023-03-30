@@ -104,7 +104,7 @@ document.addEventListener("keydown", (function (t) {
 
 
 //Skill carousel
-$(window).on("load",function(){
+$(document).ready(function(){
 	var itemsPerPage=0;
 
 	var data=$("#languagesCarouselContainer .data");
@@ -221,7 +221,7 @@ $(window).on("load",function(){
 });
 
 //Skills panel
-$(window).on("load", function () {
+$(document).ready(function () {
 	var itemsPerRow = 0;
 	
 
@@ -378,7 +378,7 @@ $(window).on("load", function () {
 
 //See more buttons for languages carousel
 
-$(window).on("load",function(){
+$(document).ready(function(){
 	//buttons
 	var buttons=$("#languagesCarousel .skill-more");
 	buttons.on("click",function(ev)
