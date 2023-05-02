@@ -267,6 +267,7 @@ $(document).ready(function () {
 
 		//create containers to fit width
 		var containerIdx = 0;
+		var rowIdx=0;
 		const numRows = Math.ceil(skills.length / itemsPerRow);
 		const numPages = Math.ceil(numRows / rowsPerPage);
 
@@ -276,7 +277,7 @@ $(document).ready(function () {
 			const page = pageTemplate.clone();
 
 			//for each row to be placed in this page
-			for (var rowIdx = 0; rowIdx < rowsPerPage; rowIdx++) {
+			for (var pageRowIdx = 0; pageRowIdx < rowsPerPage && rowIdx<numRows; pageRowIdx++,rowIdx++) {
 				const row=rowTemplate.clone();
 
 				//For each container to be placed in this row
@@ -330,9 +331,23 @@ $(document).ready(function () {
 
 		//Disable carousel buttons if they are unnecessary
 		carousel.children(".carousel-control").prop('hidden',numPages<=1)
+
 	};
 
-	
+	//Carousel dynamic height
+	const updateCarouselHeight=function(event)
+	{
+		const inner=$("#skillsCarousel").children(".carousel-inner")
+		const newHeight=event.relatedTarget.children[0].children.length*200
+		inner.height( newHeight)
+	}
+	$("#skillsCarousel").on("slide.bs.carousel", updateCarouselHeight)
+	$(document).ready(function () {
+		const inner=$("#skillsCarousel").children(".carousel-inner")
+		const newHeight=inner.children(".active")[0].children[0].children.length*200
+		inner.height( newHeight)
+	})
+
 
 	const onResize=function()
 	{
