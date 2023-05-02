@@ -309,7 +309,7 @@ $(document).ready(function () {
 							"data-html":"true",
 							"title":skillHTML
 						});
-						
+
 						skillMore.tooltip()
 					}
 
@@ -349,7 +349,10 @@ $(document).ready(function () {
 	const updateCarouselHeight=function()
 	{
 		const inner=$("#skillsCarousel").children(".carousel-inner")
-		const newHeight=inner.children(".active")[0].children[0].children.length*200
+		
+		const activePage=inner.children(".active");
+		var newHeight=0;
+		if(activePage.length>0) newHeight=inner.children(".active")[0].children[0].children.length*200;
 		inner.height(newHeight)
 	}
 	
