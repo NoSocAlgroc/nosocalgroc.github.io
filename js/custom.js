@@ -303,11 +303,14 @@ $(document).ready(function () {
 					const skillHTML = skill.children(".skillHTML").html();
 					if(skillHTML)
 					{
-						container.children(".skill-more").attr({
+						const skillMore=container.children(".skill-more")
+						skillMore.attr({
 							"data-toggle":"tooltip",
 							"data-html":"true",
 							"title":skillHTML
 						});
+						
+						skillMore.tooltip()
 					}
 
 					//Add column to row
