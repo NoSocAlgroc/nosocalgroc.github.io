@@ -335,18 +335,25 @@ $(document).ready(function () {
 	};
 
 	//Carousel dynamic height
-	const updateCarouselHeight=function(event)
+	const updateCarouselHeightOnSlide=function(event)
 	{
 		const inner=$("#skillsCarousel").children(".carousel-inner")
 		const newHeight=event.relatedTarget.children[0].children.length*200
 		inner.height( newHeight)
 	}
-	$("#skillsCarousel").on("slide.bs.carousel", updateCarouselHeight)
-	$(document).ready(function () {
+	$("#skillsCarousel").on("slide.bs.carousel", updateCarouselHeightOnSlide)
+
+	const updateCarouselHeight=function()
+	{
 		const inner=$("#skillsCarousel").children(".carousel-inner")
 		const newHeight=inner.children(".active")[0].children[0].children.length*200
-		inner.height( newHeight)
-	})
+		inner.height(newHeight)
+	}
+	
+	
+
+	
+	
 
 
 	const onResize=function()
@@ -381,10 +388,12 @@ $(document).ready(function () {
 		filter=string.toLowerCase().split(" ");
 		updateFilterSkills(filter);
 		updateItemsFunc();
+		updateCarouselHeight();
 	};
 
 	//initial build
 	onResize();
+	updateCarouselHeight()
 	$(window).on("resize", onResize);
 	skillsFilter.on("input",updateFilter)
 
